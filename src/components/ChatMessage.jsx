@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
 
-export function ChatMessage({ username, message }) {
+export function ChatMessage({ room, username, message, replayed }) {
   return (
-    <div>
+    <div style={{ opacity: replayed ? 0.5 : 1.0 }}>
       {username ? (
         <span>
+          <code>[{room}]</code>
           <b>{username}</b>: {message}
         </span>
       ) : (
@@ -15,6 +16,8 @@ export function ChatMessage({ username, message }) {
 }
 
 ChatMessage.propTypes = {
+  room: PropTypes.string,
   username: PropTypes.string,
   message: PropTypes.string.isRequired,
+  replayed: PropTypes.bool,
 }
