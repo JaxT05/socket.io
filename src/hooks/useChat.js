@@ -21,7 +21,7 @@ export function useChat() {
     setMessages([])
   }
   async function getRooms() {
-    const userInfo = await socket.emitWithAcl('user.info', socket.id)
+    const userInfo = await socket.emitWithAck('user.info', socket.id)
     const rooms = userInfo.rooms.filter((room) => room !== socket.id)
     return rooms
   }
